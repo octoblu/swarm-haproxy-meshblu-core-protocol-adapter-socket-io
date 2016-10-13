@@ -37,8 +37,8 @@ run_haproxy() {
 
 
 write_haproxy() {
-  local dns_ip="$1"
-  local servers=( $2 )
+  local dns_ip="$1"; shift
+  local servers=( $@ )
 
   generate_haproxy "$dns_ip" "${servers[@]}" > /usr/local/etc/haproxy/haproxy.cfg
 }
