@@ -1,1 +1,1 @@
-# swarm-haproxy-meshblu-core-protocol-adapter-socket-io
+# swarm-haproxy-socket-io
