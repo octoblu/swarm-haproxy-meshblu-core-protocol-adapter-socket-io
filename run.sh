@@ -19,8 +19,8 @@ assert_servers() {
 }
 
 generate_haproxy() {
-  local dns_ip="$1"
-  local servers=( $2 )
+  local dns_ip="$1"; shift
+  local servers=( $@ )
 
   ./haproxy.cfg.sh "$dns_ip" "${servers[@]}"
 }
@@ -50,6 +50,8 @@ main(){
   assert_dns_ip "$dns_ip"
   assert_servers "${servers[@]}"
 
+  generate_haproxy "$dns_ip" "${servers[@]}"
+  exit 5
   write_haproxy "$dns_ip" "${servers[@]}"
   run_haproxy
 }

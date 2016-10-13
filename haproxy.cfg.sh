@@ -1,7 +1,7 @@
 #!/bin/bash
 
-dns_ip="$1"
-servers=( $2 )
+dns_ip="$1"; shift
+servers=( $@ )
 
 echo """
 global
