@@ -50,8 +50,6 @@ main(){
   assert_dns_ip "$dns_ip"
   assert_servers "${servers[@]}"
 
-  generate_haproxy "$dns_ip" "${servers[@]}"
-  exit 5
   write_haproxy "$dns_ip" "${servers[@]}"
   run_haproxy
 }
