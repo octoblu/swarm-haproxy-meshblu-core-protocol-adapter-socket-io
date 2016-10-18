@@ -43,7 +43,12 @@ backend meshblu-socket-io
   option forceclose
   # this must be the partial url
   option httpchk GET /healthcheck
+  stick-table type string len 40 size 20M expire 2m
+  stick store-response set-cookie(io)
+  stick on cookie(io)
+  stick on url_param(sid)
 """
+
 
 for server in ${servers[@]}; do
   echo "  server $server $server:80 resolvers dns resolve-prefer ipv4 check inter 1m"
