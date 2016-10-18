@@ -2,6 +2,5 @@ FROM haproxy:1.6
 
 EXPOSE 80
 
-ADD run.sh .
-ADD haproxy.cfg.sh .
+COPY . .
 CMD ["./run.sh"]
