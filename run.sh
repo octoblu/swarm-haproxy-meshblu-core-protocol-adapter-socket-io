@@ -45,7 +45,7 @@ write_haproxy() {
 
 main(){
   local dns_ip="$(get_dns_ip)"
-  local servers=( $SERVERS )
+  IFS=',' read -r -a servers <<< "$SERVERS"
 
   assert_dns_ip "$dns_ip"
   assert_servers "${servers[@]}"
